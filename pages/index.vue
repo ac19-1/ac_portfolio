@@ -1,143 +1,155 @@
 <template>
   <div class="outer">
     <div class="header">
-      <div id="circle">
-        <img alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
-      </div>
-      <div class="greetings">
-        <img id="hello" src="~/assets/images/profile/hello.png" alt="Hello" height="10%">
-        <img id="name" src="~/assets/images/profile/name.png" alt="I'm Audrey" height="10%">
-        <div class="job">
-          <div class="job-title d-flex justify-content-center">A Junior Front End Developer and Designer</div>
-          <div class="d-flex justify-content-center">I love developing beautiful website</div>
+      <transition name="fade">
+        <div id="circle" v-if="profileLoad">
+          <img v-if="profileLoad" alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
         </div>
+      </transition>
+      <div class="greetings">
+        <transition name="hello-slide-fade">
+          <img alt="Hello," src="~/assets/images/profile/hello.png" height="10%" id="hello" v-if="profileLoad">
+        </transition>
+        <transition name="name-slide-fade">
+          <img alt="I'm Audrey" src="~/assets/images/profile/name.png" height="10%" id="name" v-if="profileLoad">
+        </transition>
+        <transition name="job-slide-fade">
+          <div id="job" class="job" v-if="jobLoad">
+            <div class="job-title d-flex justify-content-center">A Junior Front End Developer and Designer</div>
+            <div class="d-flex justify-content-center">I love developing beautiful website</div>
+          </div>
+        </transition>
       </div>
-      <div class="d-flex justify-content-center align-items-flex-end">
-        <button
-          class="no-outline font-weight-bold text-capitalize letter-spacing-15"
-          @click="scrollDown"
-        >
-          <v-icon color="#757575" large>mdi-chevron-down</v-icon>
-        </button>
-        
-      </div>
+      <transition name="job-slide-fade">
+        <div id="button" class="d-flex justify-content-center align-items-flex-end" v-if="buttonLoad">
+          <button
+            class="no-outline font-weight-bold text-capitalize letter-spacing-15"
+            @click="scrollDown"
+          >
+            <v-icon color="#757575" large>mdi-chevron-down</v-icon>
+          </button>
+          
+        </div>
+      </transition>
     </div>
     <div class="container m-height-full">
-      <v-tabs grow v-model="tab" color="#e3a0b6">
-        <v-tab>Skills Overview</v-tab>
-        <v-tab>About</v-tab>
-        <!-- <v-tab>Work</v-tab> -->
-      </v-tabs>
-      <v-tabs-items v-model="tab" style="background:transparent">
-        <v-tab-item>
-          <div class="skills-overview container">
-            <div class="p-5 skills d-flex justify-content-center flex-wrap">
-              <b-card
-                class="skill-pancake-flex mx-3"
-                img-src="~/assets/images/skills/frontend.png"
-                img-alt="frontend"
-              >
-                <b-card-title class="text-center">Front End</b-card-title>
-                <b-card-text>
-                  <div class="container">
-                    <ul>
-                      <li v-for="x in skills.frontend" :key="x">{{x}}</li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-card>
-              <b-card
-                class="skill-pancake-flex mx-3"
-                img-src="~/assets/images/skills/backend.png"
-                img-alt="backend"
-              >
-                <b-card-title class="text-center">Back End</b-card-title>
-                <b-card-text>
-                  <div class="container">
-                    <ul>
-                      <li v-for="x in skills.backend" :key="x">{{x}}</li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-card>
-              <b-card
-                class="skill-pancake-flex mx-3"
-                img-src="~/assets/images/skills/others.png"
-                img-alt="others"
-              >
-                <b-card-title class="text-center">Others</b-card-title>
-                <b-card-text>
-                  <div class="container">
-                    <ul>
-                      <li v-for="x in skills.others" :key="x">{{x}}</li>
-                    </ul>
-                  </div>
-                </b-card-text>
-              </b-card>
-            </div>
-          </div>
-        </v-tab-item>
-        <v-tab-item>
-          <div class="about container">
-            <div class="p-5 about d-flex justify-content-center flex-wrap">
-              <div style="margin:2% 0; display:grid; grid-template-columns: 25% 75%;" class="w-100">
-                <div>
-                  <div class="d-flex justify-content-center">
-                    <div class="profile mb-3">
-                      <img alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
-                    </div>
-                  </div>
-                  <div class="profile-detail text-center">
-                    <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
-                  </div>
+      <div class="about container m-height-full d-flex justify-content-center align-items-center">
+        <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative">
+          <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h3>
+          <div style="margin:2% 0; display:grid; grid-template-columns: 25% 75%;" class="w-100">
+            <div>
+              <div class="d-flex justify-content-center">
+                <div class="profile mb-3">
+                  <img alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
                 </div>
-                <div class="profile-summary ml-4">
-                  <div>
-                    <h4>Who am I?</h4>
-                    <p class="text-justify">A college student at Bina Nusantara University, majoring in Computer Science Program, and concentrating in Database.</p>
-                  </div>
-                  <div>
-                    <h4>My Experience</h4>
-                    <p class="text-justify">A Teaching Assistant at Software Laboratory Center, BINUS University since 2019.</p>
-                  </div>
-                  <div>
-                    <h4>Tools</h4>
-                    <div class="tools" v-for="x in tools" :key="x">
-                      <div class="icon">
-                        
-                      </div>
-                      <div class="ide">{{x.name}}</div>
+              </div>
+              <div class="profile-detail text-center">
+                <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
+              </div>
+            </div>
+            <div class="profile-summary ml-4">
+              <div>
+                <h4 class="font-weight-bold">Who am I?</h4>
+                <p class="text-justify">A college student at Bina Nusantara University, majoring in Computer Science Program, and concentrating in Database.</p>
+              </div>
+              <div>
+                <h4 class="font-weight-bold">My Experience</h4>
+                <p class="text-justify">A Teaching Assistant at Software Laboratory Center, Bina Nusantara University since 2019.</p>
+              </div>
+              <div>
+                <h4 class="font-weight-bold">Tools</h4>
+                <div style="display:grid; grid-template-columns:50% 50%" class="mb-3">
+                  <div class="tools" v-for="x in tools" :key="x">
+                    <div class="icon mr-2">
+                      <v-icon>mdi-check</v-icon>
                     </div>
+                    <div class="ide">{{x.name}}</div>
                   </div>
                 </div>
               </div>
+              <!-- <div>
+                <h4 class="font-weight-bold">Working Environment</h4>
+              </div> -->
             </div>
           </div>
-        </v-tab-item>
-        <!-- <v-tab-item>
-          <div class="work container">
-
+        </div>
+      </div>
+    
+      <div class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
+        <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column  border-radius-8 box-shadow position-relative">
+          <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h3>
+          <div class="skills d-flex justify-content-center flex-wrap">
+            <b-card
+              class="skill-pancake-flex mx-3"
+              img-src="~/assets/images/skills/frontend.png"
+              img-alt="frontend"
+            >
+              <b-card-title class="text-center">Front End</b-card-title>
+              <b-card-text>
+                <div class="">
+                  <ul>
+                    <li v-for="x in skills.frontend" :key="x">
+                      <v-icon>mdi-check</v-icon>
+                      {{x}}
+                    </li>
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-card>
+            <b-card
+              class="skill-pancake-flex mx-3"
+              img-src="~/assets/images/skills/backend.png"
+              img-alt="backend"
+            >
+              <b-card-title class="text-center">Back End</b-card-title>
+              <b-card-text>
+                <div class="">
+                  <ul>
+                    <li v-for="x in skills.backend" :key="x">
+                      <v-icon>mdi-check</v-icon>
+                      {{x}}
+                    </li>
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-card>
+            <b-card
+              class="skill-pancake-flex mx-3"
+              img-src="~/assets/images/skills/others.png"
+              img-alt="others"
+            >
+              <b-card-title class="text-center">Others</b-card-title>
+              <b-card-text>
+                <div class="">
+                  <ul>
+                    <li v-for="x in skills.others" :key="x">
+                      <v-icon>mdi-check</v-icon>
+                      {{x}}
+                    </li>
+                  </ul>
+                </div>
+              </b-card-text>
+            </b-card>
           </div>
-        </v-tab-item> -->
-      </v-tabs-items>
+        </div>
+      </div>
+          
     </div>
     <div class="floating-button">
-      <transition name="fade">
-        <v-btn
-          fixed
-          bottom
-          right
-          hover
-          fab
-          color="#757575"
-          dark
-          class="no-outline"
-          @click="backToTop"
-          v-show="scrollTop != 0"
-        >
-          <v-icon>mdi-chevron-up</v-icon>
-        </v-btn>
-      </transition>
+      <v-btn
+        fixed
+        bottom
+        right
+        hover
+        fab
+        color="#757575"
+        dark
+        class="no-outline"
+        @click="backToTop"
+        v-show="scrollTop != 0"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
     </div>
   </div>
 </template>
@@ -153,6 +165,9 @@ export default {
   data() {
     return {
       scrollTop: 0,
+      profileLoad: false,
+      jobLoad: false,
+      buttonLoad: false,
       skills: {
         frontend: [
           'React',
@@ -175,37 +190,16 @@ export default {
       },
       tab: null,
       tools: [
-        {
-          name: 'Visual Studio Code'
-        },
-        {
-          name: 'Android Studio'
-        },
-        {
-          name: 'Dev-C++'
-        },
-        {
-          name: 'Eclipse'
-        },
-        {
-          name: 'NetBeans'
-        },
-        {
-          name: 'SQL Server Management Studio'
-        },
-        {
-          name: 'Adobe Animate'
-        },
-        {
-          name: 'PHPStorm'
-        },
-        {
-          name: 'Axure'
-        },
-        {
-          name: 'Visual Studio'
-        }
-
+        { name: 'Visual Studio Code' },
+        { name: 'Android Studio' },
+        { name: 'Dev-C++' },
+        { name: 'Eclipse' },
+        { name: 'NetBeans' },
+        { name: 'SQL Server Management Studio' },
+        { name: 'Adobe Animate' },
+        { name: 'PHPStorm' },
+        { name: 'Axure' },
+        { name: 'Visual Studio' },
       ]
     }
   },
@@ -229,17 +223,43 @@ export default {
       let hello = document.querySelector('#hello')
       let name = document.querySelector('#name')
       let circle = document.querySelector('#circle')
+      let job = document.querySelector('#job')
+      let button = document.querySelector('#button')
       let scrollPercentage = Math.floor(window.scrollY/window.innerHeight*100)
       
-      hello.style.transform = `translate(-30% ,-${30+scrollPercentage*3}%)`
-      name.style.transform = `translate(-80% ,-${70+scrollPercentage*18}%)`
-      circle.style.transform = `translate(-50% ,-${40+scrollPercentage*3}%)`
+      hello.style.transform = `translate(-30% ,-${30+scrollPercentage*6}%)`
+      name.style.transform = `translate(-80% ,-${70+scrollPercentage*6}%)`
+      circle.style.transform = `translate(-50% ,-${40+scrollPercentage*2}%)`
+      job.style.transform = `translateY(-${90+scrollPercentage*6}%)`
+      button.style.transform = `translateY(-${scrollPercentage*8}%)`
+
+      job.style.opacity = 
+      button.style.opacity = 
+      hello.style.opacity = 
+      name.style.opacity = 
+      circle.style.opacity = `${100-scrollPercentage*2}%`
+      
+    },
+    firstLoad(){
+      setTimeout(() => {
+        this.profileLoad = true
+      }, 1000);
+
+      setTimeout(() => {
+        this.jobLoad = true
+      }, 1500);
+
+      setTimeout(() => {
+        this.buttonLoad = true
+      }, 2000);
     }
   },
 
   mounted() {
-    window.addEventListener('scroll', this.scrollHandler)
+    this.backToTop()
     this.setScrollTop()
+    this.firstLoad()
+    window.addEventListener('scroll', this.scrollHandler)
   }
 }
 </script>
@@ -263,6 +283,10 @@ export default {
     background-image: linear-gradient(to left, #fce4ec 0%, #fce4ec 50%,#e3eeff 50%, #e3eeff 100%);
     width: 100%;
     height: 100vh;
+  }
+
+  .skills-overview li {
+    list-style-type: none;
   }
 
   #circle, .profile{
@@ -302,8 +326,9 @@ export default {
 
   .job {
     position: absolute;
-    bottom: 10%;
+    top: 90%;
     width: 100%;
+    transform: translateY(-90%)
   }
 
   .job-title{
@@ -334,11 +359,45 @@ export default {
   }
 
   .fade-enter-active, .fade-leave-active{
-    transition: opacity 0.1s;
+    transition: opacity 1.5s !important;
   }
 
   .fade-enter, .fade-leave-to {
-    opacity: 0;
+    opacity: 0 !important;
+  }
+
+  .hello-slide-fade-enter-active, .hello-slide-fade-leave-active{
+    transition: all 1.5s ease !important;
+  }
+
+  .hello-slide-fade-enter, .hello-slide-fade-leave-to{
+    position: absolute !important;
+    top: 30% !important;
+    left: 26% !important;
+    transform: translate(-26%, -30%) !important;
+    opacity: 0 !important;
+  }
+
+  .name-slide-fade-enter-active, .name-slide-fade-leave-active{
+    transition: all 1.5s ease !important;
+  }
+
+  .name-slide-fade-enter, .name-slide-fade-leave-to{
+    position: absolute !important;
+    top: 70% !important;
+    left: 84% !important;
+    transform: translate(-84%, -70%) !important;
+    opacity: 0 !important;
+  }
+
+  .job-slide-fade-enter-active, .job-slide-fade-leave-active{
+    transition: all 1.5s ease !important;
+  }
+
+  .job-slide-fade-enter, .job-slide-fade-leave-to{
+    top: 85% !important;
+    transform: translateY(-85%) !important;
+    opacity: 0 !important;
   }
 
   .letter-spacing-15 {
@@ -367,5 +426,13 @@ export default {
 
   .tools {
     display: flex;
+  }
+
+  .border-radius-8{
+    border-radius: 8px
+  }
+
+  .box-shadow {
+    box-shadow: 0px 5px 20px 0px #dddddd;
   }
 </style>
