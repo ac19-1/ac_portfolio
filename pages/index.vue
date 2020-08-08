@@ -50,7 +50,7 @@
             <div class="profile-summary ml-4">
               <div>
                 <h4 class="font-weight-bold">Who am I?</h4>
-                <p class="text-justify">A college student at Bina Nusantara University, majoring in Computer Science Program, and concentrating in Database.</p>
+                <p class="text-justify">A college student at Bina Nusantara University majoring in Computer Science Program concentrating in Database looking for the first job.</p>
               </div>
               <div>
                 <h4 class="font-weight-bold">My Experience</h4>
