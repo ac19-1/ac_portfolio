@@ -28,12 +28,13 @@
       <transition name="job-slide-fade">
         <div id="button" class="d-flex justify-content-center align-items-flex-end" v-if="buttonLoad">
           <button
-            class="no-outline font-weight-bold text-capitalize letter-spacing-15"
+            class="bg-transparent border-0 p-0 no-outline font-weight-bold text-capitalize letter-spacing-15"
             @click="scrollDown"
+            v-bind="attrs"
+            v-on="on"
           >
-            <v-icon color="#757575" large>mdi-chevron-down</v-icon>
+            <v-icon id="scroll-down-icon" color="#757575" large>mdi-chevron-down</v-icon>
           </button>
-          
         </div>
       </transition>
     </div>
@@ -64,7 +65,7 @@
                     class="bg-transparent border-0 p-0" 
                     v-b-popover.hover.bottom="'angelaaudreychen15@gmail.com'"
                   >
-                    <font-awesome-icon id="contact-envelope" :icon="[icons.envelope.style, icons.envelope.name]" />
+                    <font-awesome-icon id="contact-envelope" :icon="[icons.envelope_square.style, icons.envelope_square.name]" />
                   </b-button>
                   <b-button 
                     @click="copyText('087768781471')" 
@@ -87,7 +88,7 @@
               </div>
               <div>
                 <h4 class="font-weight-bold">Tools</h4>
-                <div style="display:grid; grid-template-columns:50% 50%" class="mb-3">
+                <div style="display:grid; grid-template-columns:40% 40%" class="mb-3">
                   <div class="tools" v-for="x in tools" :key="x">
                     <div class="icon mr-2">
                       <v-icon>mdi-check</v-icon>
@@ -529,5 +530,13 @@ export default {
   .btn:focus, .btn:active, .btn, .btn:hover{
     outline: none !important;
     box-shadow: none !important;
+  }
+
+  #scroll-down-icon{
+    transition: all 0.2s ease
+  }
+
+  #scroll-down-icon:hover{
+    color: #464646 !important
   }
 </style>

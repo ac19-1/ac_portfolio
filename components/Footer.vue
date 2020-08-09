@@ -20,7 +20,7 @@
 			</div>
 			<hr>
 			<div class="d-flex justify-content-center font-weight-bold">
-				Copyright &copy; {{ new Date().getFullYear() }} - Audrey Chen
+				Copyright &copy; 2020{{new Date().getFullYear() != '2020' ? ' - ' + new Date().getFullYear() : '' }} Audrey Chen
 			</div>
 		</div>
 	</v-footer>
