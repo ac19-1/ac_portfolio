@@ -1,5 +1,6 @@
 <template>
   <div class="outer">
+    <nav-bar/>
     <div class="header">
       <transition name="fade">
         <div id="circle" v-if="profileLoad">
@@ -15,8 +16,14 @@
         </transition>
         <transition name="job-slide-fade">
           <div id="job" class="job" v-if="jobLoad">
-            <div class="job-title d-flex justify-content-center">A Junior Front End Developer and Designer</div>
-            <div class="d-flex justify-content-center">I love developing beautiful website</div>
+            <div class="job-title d-flex justify-content-center">A Junior Front End</div>
+            <div class="job-title d-flex justify-content-center">
+              <label>
+                <font class="text-pink">Developer</font> 
+                and 
+                <font class="text-blue">Designer</font>
+              </label>
+            </div>
           </div>
         </transition>
       </div>
@@ -32,8 +39,8 @@
         </div>
       </transition>
     </div>
-    <div class="container m-height-full">
-      <div class="about container m-height-full d-flex justify-content-center align-items-center">
+    <div class="container m-height-full position-relative">
+      <div style="height: 110vh" class="about container m-height-full d-flex justify-content-center align-items-center">
         <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative">
           <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h3>
           <div style="margin:2% 0; display:grid; grid-template-columns: 25% 75%;" class="w-100">
@@ -44,13 +51,37 @@
                 </div>
               </div>
               <div class="profile-detail text-center">
+                <input type="text" style="opacity:0; position:absolute; left:-99999px" id="myInput">
                 <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
+                <div class="d-flex justify-content-around align-items-center icon px-5">
+                  <b-button
+                    @click="copyText('angelaaudrey15')" 
+                    class="bg-transparent border-0 p-0" 
+                    v-b-popover.hover.bottom="'angelaaudrey15'"
+                  >
+                    <font-awesome-icon id="contact-line" :icon="[icons.line.style, icons.line.name]" />
+                  </b-button>
+                  <b-button 
+                    @click="copyText('angelaaudreychen15@gmail.com')" 
+                    class="bg-transparent border-0 p-0" 
+                    v-b-popover.hover.bottom="'angelaaudreychen15@gmail.com'"
+                  >
+                    <font-awesome-icon id="contact-envelope" :icon="[icons.envelope.style, icons.envelope.name]" />
+                  </b-button>
+                  <b-button 
+                    @click="copyText('087768781471')" 
+                    class="bg-transparent border-0 p-0" 
+                    v-b-popover.hover.bottom="'087768781471'"
+                  >
+                    <font-awesome-icon id="contact-phone" :icon="[icons.phone.style, icons.phone.name]" />
+                  </b-button>
+                </div>
               </div>
             </div>
             <div class="profile-summary ml-4">
               <div>
                 <h4 class="font-weight-bold">Who am I?</h4>
-                <p class="text-justify">A college student at Bina Nusantara University majoring in Computer Science Program concentrating in Database looking for the first job.</p>
+                <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job. I love developing a <font class="text-pink">beautiful</font> website and of course, I'm a fan of cute animals.</p>
               </div>
               <div>
                 <h4 class="font-weight-bold">My Experience</h4>
@@ -75,7 +106,7 @@
         </div>
       </div>
     
-      <div class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
+      <div style="height: 110vh" class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
         <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column  border-radius-8 box-shadow position-relative">
           <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h3>
           <div class="skills d-flex justify-content-center flex-wrap">
@@ -133,7 +164,7 @@
           </div>
         </div>
       </div>
-          
+      <footer/>
     </div>
     <div class="floating-button">
       <v-btn
@@ -151,14 +182,30 @@
         <v-icon>mdi-chevron-up</v-icon>
       </v-btn>
     </div>
+    <v-snackbar
+      v-model="snackbar"
+      :timeout="1000"
+    >
+      <div class="text-center">{{ copiedText }}</div>
+    </v-snackbar>
   </div>
 </template>
 
 <script>
+import { NavBar } from "~/components/NavBar";
+import { Footer } from "~/components/Footer";
+import { mapGetters } from "vuex";
 export default {
+  computed: mapGetters({
+    icons: 'constants/get'
+  }),
+  components:{
+    NavBar,
+    Footer
+  },
   head() {
     return {
-      title: "Home"
+      title: "Audrey Chen's Portfolio"
     }
   },
 
@@ -168,12 +215,16 @@ export default {
       profileLoad: false,
       jobLoad: false,
       buttonLoad: false,
+      snackbar: false,
+      copiedText: '',
       skills: {
         frontend: [
           'React',
           'Vue/Nuxt',
           'JavaScript/TypeScript',
           'HTML/CSS/SASS',
+          'Bootstrap/Bootstrap-Vue',
+          'Vuetify'
         ],
         backend: [
           'PHP/Laravel',
@@ -238,7 +289,13 @@ export default {
       hello.style.opacity = 
       name.style.opacity = 
       circle.style.opacity = `${100-scrollPercentage*2}%`
-      
+    },
+    circleParallax() {
+      let scrollPercentage = Math.floor(window.scrollY/window.innerHeight*100)
+      let circles = document.querySelectorAll('.animation-circle')
+      circles.forEach(c => {
+        c.style.transform = `translate(-50% ,-${50+scrollPercentage}%)`
+      });
     },
     firstLoad(){
       setTimeout(() => {
@@ -252,6 +309,14 @@ export default {
       setTimeout(() => {
         this.buttonLoad = true
       }, 2000);
+    },
+    copyText(str){
+      this.copiedText = "Copied to clipboard: " + str
+      var copyText = document.getElementById("myInput");
+      copyText.value = str
+      copyText.select();
+      document.execCommand("copy");
+      this.snackbar = true
     }
   },
 
@@ -434,5 +499,41 @@ export default {
 
   .box-shadow {
     box-shadow: 0px 5px 20px 0px #dddddd;
+  }
+
+  #hello, #name, #circle, #job, #button {
+    transition-duration: 0.05s;
+  }
+
+  .text-pink {
+    color: #ff5b91
+  }
+
+  .text-blue {
+    color: #5096ff
+  }
+
+  #contact-line, #contact-phone, #contact-envelope{
+    transition: color 0.2s ease;
+    cursor: pointer;
+    font-size: 30px;
+    color: #555555;
+  }
+
+  #contact-line:hover {
+    color: #00c300;
+  }
+
+  #contact-phone:hover {
+    color: #91bdff
+  }
+
+  #contact-envelope:hover {
+    color: #ff4f4f
+  }
+
+  .btn:focus, .btn:active, .btn, .btn:hover{
+    outline: none !important;
+    box-shadow: none !important;
   }
 </style>

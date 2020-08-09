@@ -11,9 +11,18 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
     "bootstrap-vue": "^2.16.0",
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/vuetify": "^1.11.2"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0"
+    }
   }
 }
