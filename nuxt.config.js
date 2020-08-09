@@ -15,7 +15,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Audrey Chen' || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,7 +56,8 @@ export default {
   fontawesome: {
     icons: {
       solid: true,
-      brands: true
+      brands: true,
+      regular: true
     }
   },
   /*
@@ -77,5 +78,11 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  }
+  },
+
+  loadingIndicator:{
+    name: 'folding-cube',
+    color: '#666666',
+    background: '#fbe4fc33'
+  },
 }

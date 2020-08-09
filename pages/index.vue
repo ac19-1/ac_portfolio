@@ -19,9 +19,7 @@
             <div class="job-title d-flex justify-content-center">A Junior Front End</div>
             <div class="job-title d-flex justify-content-center">
               <label>
-                <font class="text-pink">Developer</font> 
-                and 
-                <font class="text-blue">Designer</font>
+                <font class="text-pink">Developer</font>
               </label>
             </div>
           </div>
@@ -40,7 +38,7 @@
       </transition>
     </div>
     <div class="container m-height-full position-relative">
-      <div style="height: 110vh" class="about container m-height-full d-flex justify-content-center align-items-center">
+      <div id="about" style="height: 110vh" class="about container m-height-full d-flex justify-content-center align-items-center">
         <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative">
           <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h3>
           <div style="margin:2% 0; display:grid; grid-template-columns: 25% 75%;" class="w-100">
@@ -106,7 +104,7 @@
         </div>
       </div>
     
-      <div style="height: 110vh" class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
+      <div id="skills-overview" style="height: 110vh" class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
         <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column  border-radius-8 box-shadow position-relative">
           <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h3>
           <div class="skills d-flex justify-content-center flex-wrap">
@@ -164,8 +162,8 @@
           </div>
         </div>
       </div>
-      <footer/>
     </div>
+    <Footer/>
     <div class="floating-button">
       <v-btn
         fixed
@@ -203,12 +201,6 @@ export default {
     NavBar,
     Footer
   },
-  head() {
-    return {
-      title: "Audrey Chen's Portfolio"
-    }
-  },
-
   data() {
     return {
       scrollTop: 0,
@@ -219,24 +211,25 @@ export default {
       copiedText: '',
       skills: {
         frontend: [
-          'React',
-          'Vue/Nuxt',
-          'JavaScript/TypeScript',
           'HTML/CSS/SASS',
+          'JavaScript/TypeScript',
+          'jQuery',
+          'ReactJS/ReactTS',
+          'Vue.js/Nuxt.js',
+          'Vuetify',
           'Bootstrap/Bootstrap-Vue',
-          'Vuetify'
         ],
         backend: [
+          'MSSQL/MySQL',
           'PHP/Laravel',
           'Firebase',
-          'MSSQL/MySQL',
+          'SQLite',
         ],
         others: [
           'C/C++',
           'C#',
-          'Java Swing/Android',
-          'Unity',
           'UX/Prototyping',
+          'Java Swing/Android',
         ]
       },
       tab: null,
@@ -251,6 +244,7 @@ export default {
         { name: 'PHPStorm' },
         { name: 'Axure' },
         { name: 'Visual Studio' },
+        { name: 'Unity' },
       ]
     }
   },
@@ -529,7 +523,7 @@ export default {
   }
 
   #contact-envelope:hover {
-    color: #ff4f4f
+    color: #D14836
   }
 
   .btn:focus, .btn:active, .btn, .btn:hover{

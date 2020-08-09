@@ -1,7 +1,12 @@
 <template>
   <div id="nav">
-    <a href="" class="text-dark nav-logo text-uppercase font-weight-bold">about</a>
-		<a href="" class="text-dark nav-actions text-uppercase font-weight-bold">play ground</a>
+    <div class="w-50 h-100">
+			<a href="#about" class="text-dark nav-logo text-uppercase font-weight-bold">about</a>
+			<a href="#skills-overview" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</a>
+		</div>
+		<div class="w-50">
+			<!-- <a href="" class="text-dark nav-actions text-uppercase font-weight-bold">play ground</a> -->
+		</div>
   </div>
 </template>
 
@@ -23,7 +28,7 @@ export default {
 		},
 		setNavBar() {
 			let nav = document.querySelector('#nav')
-			this.scrollTop == 0 ? nav.style.background = 'transparent' : nav.style.background ='white'
+			this.scrollTop == 0 ? nav.style.background = 'transparent' : nav.style.background ='#ffd2d2'
 		}
 	},
 
@@ -42,17 +47,17 @@ export default {
 		top: 0;
 		z-index: 10000;
 		width: 100%;
-		transition: all 0.5s ease;
+		transition: all 0.2s ease;
 	}
 
-	a{
-		padding: 0.5% 1%;
-		transition: all 0.3s ease;
+	#nav a{
+		padding: 1% 2%;
+		transition: all 0.2s ease;
 	}
 
-	a:hover {
+	#nav a:hover {
 		text-decoration: none;
-		background-color: #fafafa;
+		background-color: #ffffff;
 		border-radius: 8px;
 	}
 </style>

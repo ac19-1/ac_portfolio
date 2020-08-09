@@ -9,9 +9,21 @@ export const state = () => ({
             name: 'phone-square-alt' 
         },
         envelope: { 
-            style: 'fas', 
+            style: 'far', 
             name: 'envelope' 
-        }
+        },
+        envelope_square: { 
+            style: 'fas', 
+            name: 'envelope-square' 
+        },
+        github: { 
+            style: 'fab', 
+            name: 'github-square' 
+        },
+        linkedIn: { 
+            style: 'fab', 
+            name: 'linkedin' 
+        },
     }
 })
 
