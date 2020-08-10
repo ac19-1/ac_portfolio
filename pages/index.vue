@@ -9,160 +9,177 @@
       </transition>
       <div class="greetings">
         <transition name="hello-slide-fade">
-          <img alt="Hello," src="~/assets/images/profile/hello.png" height="10%" id="hello" v-if="profileLoad">
+          <img alt="Hello," src="~/assets/images/profile/hello.png" id="hello" v-if="profileLoad">
         </transition>
         <transition name="name-slide-fade">
-          <img alt="I'm Audrey" src="~/assets/images/profile/name.png" height="10%" id="name" v-if="profileLoad">
+          <img alt="I'm Audrey" src="~/assets/images/profile/name.png" id="name" v-if="profileLoad">
         </transition>
-        <transition name="job-slide-fade">
-          <div id="job" class="job" v-if="jobLoad">
-            <div class="job-title d-flex justify-content-center">A Junior Front End</div>
-            <div class="job-title d-flex justify-content-center">
+        <transition name="nickname-slide-fade">
+          <div id="nickname" class="nickname" v-if="nicknameLoad">
+            <div class="nickname-title d-flex justify-content-center">Or you can call me</div>
+            <div class="nickname-title d-flex justify-content-center">
               <label>
-                <font class="text-pink">Developer</font>
+                <font class="nickname-text text-pink">Audrey</font>
               </label>
             </div>
           </div>
         </transition>
       </div>
-      <transition name="job-slide-fade">
-        <div id="button" class="d-flex justify-content-center align-items-flex-end" v-if="buttonLoad">
-          <button
-            class="bg-transparent border-0 p-0 no-outline font-weight-bold text-capitalize letter-spacing-15"
-            @click="scrollDown"
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon id="scroll-down-icon" color="#757575" large>mdi-chevron-down</v-icon>
-          </button>
-        </div>
-      </transition>
     </div>
-    <div class="container m-height-full position-relative">
-      <div id="about" style="height: 110vh" class="about container m-height-full d-flex justify-content-center align-items-center">
-        <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative">
-          <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h3>
-          <div style="margin:2% 0; display:grid; grid-template-columns: 25% 75%;" class="w-100">
-            <div>
-              <div class="d-flex justify-content-center">
-                <div class="profile mb-3">
-                  <img alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
+    <div class="position-relative">
+
+      <div style="background:rgba(105, 240, 174, 0.4)">
+        <div id="about" class="m-height-full about container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative my-5">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h4>
+            <div style="margin:2% 0;" class="w-100">
+              <div>
+                <div class="d-flex justify-content-center">
+                  <div class="profile mb-3">
+                    <img alt="profile_photo" src="~/assets/images/profile/profile.jpg" width="100%">
+                  </div>
                 </div>
-              </div>
-              <div class="profile-detail text-center">
-                <input type="text" style="opacity:0; position:absolute; left:-99999px" id="myInput">
-                <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
-                <div class="d-flex justify-content-around align-items-center icon px-5">
-                  <b-button
-                    @click="copyText('angelaaudrey15')" 
-                    class="bg-transparent border-0 p-0" 
-                    v-b-popover.hover.bottom="'angelaaudrey15'"
-                  >
-                    <font-awesome-icon id="contact-line" :icon="[icons.line.style, icons.line.name]" />
-                  </b-button>
-                  <b-button 
-                    @click="copyText('angelaaudreychen15@gmail.com')" 
-                    class="bg-transparent border-0 p-0" 
-                    v-b-popover.hover.bottom="'angelaaudreychen15@gmail.com'"
-                  >
-                    <font-awesome-icon id="contact-envelope" :icon="[icons.envelope_square.style, icons.envelope_square.name]" />
-                  </b-button>
-                  <b-button 
-                    @click="copyText('087768781471')" 
-                    class="bg-transparent border-0 p-0" 
-                    v-b-popover.hover.bottom="'087768781471'"
-                  >
-                    <font-awesome-icon id="contact-phone" :icon="[icons.phone.style, icons.phone.name]" />
-                  </b-button>
-                </div>
-              </div>
-            </div>
-            <div class="profile-summary ml-4">
-              <div>
-                <h4 class="font-weight-bold">Who am I?</h4>
-                <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job. I love developing a <font class="text-pink">beautiful</font> website and of course, I'm a fan of cute animals.</p>
-              </div>
-              <div>
-                <h4 class="font-weight-bold">My Experience</h4>
-                <p class="text-justify">A Teaching Assistant at Software Laboratory Center, Bina Nusantara University since 2019.</p>
-              </div>
-              <div>
-                <h4 class="font-weight-bold">Tools</h4>
-                <div style="display:grid; grid-template-columns:40% 40%" class="mb-3">
-                  <div class="tools" v-for="x in tools" :key="x">
-                    <div class="icon mr-2">
-                      <v-icon>mdi-check</v-icon>
-                    </div>
-                    <div class="ide">{{x.name}}</div>
+                <div class="profile-detail text-center">
+                  <input type="text" style="opacity:0; position:absolute; left:-99999px" id="myInput">
+                  <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
+                  <div class="d-flex justify-content-center align-items-center icon w-100">
+                    <b-button
+                      @click="copyText('angelaaudrey15')" 
+                      class="bg-transparent border-0 mx-3" 
+                      v-b-popover.hover.bottom="'angelaaudrey15'"
+                    >
+                      <font-awesome-icon id="contact-line" :icon="[icons.line.style, icons.line.name]" />
+                    </b-button>
+                    <b-button 
+                      @click="copyText('angelaaudreychen15@gmail.com')" 
+                      class="bg-transparent border-0 mx-3" 
+                      v-b-popover.hover.bottom="'angelaaudreychen15@gmail.com'"
+                    >
+                      <font-awesome-icon id="contact-envelope" :icon="[icons.envelope_square.style, icons.envelope_square.name]" />
+                    </b-button>
+                    <b-button 
+                      @click="copyText('087768781471')" 
+                      class="bg-transparent border-0 mx-3" 
+                      v-b-popover.hover.bottom="'087768781471'"
+                    >
+                      <font-awesome-icon id="contact-phone" :icon="[icons.phone.style, icons.phone.name]" />
+                    </b-button>
                   </div>
                 </div>
               </div>
-              <!-- <div>
-                <h4 class="font-weight-bold">Working Environment</h4>
-              </div> -->
+              <div class="profile-summary my-4">
+                <div>
+                  <h4 class="font-weight-bold">Who am I?</h4>
+                  <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job as a <font class="text-dark font-weight-bold">front-end developer</font>. I love building a <font class="text-pink">beautiful</font> website and of course, seeing all things work perfectly is what I want.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     
-      <div id="skills-overview" style="height: 110vh" class="skills-overview container m-height-full d-flex justify-content-center align-items-center">
-        <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column  border-radius-8 box-shadow position-relative">
-          <h3 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h3>
-          <div class="skills d-flex justify-content-center flex-wrap">
-            <b-card
-              class="skill-pancake-flex mx-3"
-              img-src="~/assets/images/skills/frontend.png"
-              img-alt="frontend"
-            >
-              <b-card-title class="text-center">Front End</b-card-title>
-              <b-card-text>
-                <div class="">
-                  <ul>
-                    <li v-for="x in skills.frontend" :key="x">
-                      <v-icon>mdi-check</v-icon>
-                      {{x}}
-                    </li>
-                  </ul>
-                </div>
-              </b-card-text>
-            </b-card>
-            <b-card
-              class="skill-pancake-flex mx-3"
-              img-src="~/assets/images/skills/backend.png"
-              img-alt="backend"
-            >
-              <b-card-title class="text-center">Back End</b-card-title>
-              <b-card-text>
-                <div class="">
-                  <ul>
-                    <li v-for="x in skills.backend" :key="x">
-                      <v-icon>mdi-check</v-icon>
-                      {{x}}
-                    </li>
-                  </ul>
-                </div>
-              </b-card-text>
-            </b-card>
-            <b-card
-              class="skill-pancake-flex mx-3"
-              img-src="~/assets/images/skills/others.png"
-              img-alt="others"
-            >
-              <b-card-title class="text-center">Others</b-card-title>
-              <b-card-text>
-                <div class="">
-                  <ul>
-                    <li v-for="x in skills.others" :key="x">
-                      <v-icon>mdi-check</v-icon>
-                      {{x}}
-                    </li>
-                  </ul>
-                </div>
-              </b-card-text>
-            </b-card>
+      <div style="background:rgba(130, 177, 255, 0.4)">
+        <div id="experience" class="m-height-full experience container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column my-5 border-radius-8 box-shadow position-relative w-100">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Experience</h4>
+            <div class="d-flex justify-content-center flex-wrap w-100">
+              <v-img
+                :src="require(`~/assets/images/profile/bluejack19-1.jpg`)"
+                gradient="to bottom, rgba(0, 0, 0,.3), rgba(0,0,0,0.1), rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0, 0, 0,.3)"
+                width="100%"
+              ></v-img>
+              <p class="mt-2 font-weight-bold text-justify">A Teaching Assistant at Software Laboratory Center, Bina Nusantara University since 2019.</p>
+              <div class="w-100">
+                <h4 class="font-weight-bold">What I do?</h4>
+                <p class="text-justify">
+                  As a teaching assistant, my main job is teaching college students. But besides that, I also make some cases for students and research for new things. During my time as a teaching assistant, I found my passion for being a website designer and builder, and I love making things look simply beautiful and perfect.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <div style="background:rgba(255, 255, 141, 0.4)">
+        <div id="skills-overview" class="m-height-full skills-overview container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative my-5">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h4>
+            <div class="skills d-flex justify-content-center flex-wrap">
+              <b-card
+                class="skill-pancake-flex mx-3"
+                img-src="~/assets/images/skills/frontend.png"
+                img-alt="frontend"
+              >
+                <b-card-title class="text-center">Front End</b-card-title>
+                <b-card-text>
+                  <div class="">
+                    <ul>
+                      <li v-for="x in skills.frontend" :key="x">
+                        <v-icon>mdi-check</v-icon>
+                        {{x}}
+                      </li>
+                    </ul>
+                  </div>
+                </b-card-text>
+              </b-card>
+              <b-card
+                class="skill-pancake-flex mx-3"
+                img-src="~/assets/images/skills/backend.png"
+                img-alt="backend"
+              >
+                <b-card-title class="text-center">Back End</b-card-title>
+                <b-card-text>
+                  <div class="">
+                    <ul>
+                      <li v-for="x in skills.backend" :key="x">
+                        <v-icon>mdi-check</v-icon>
+                        {{x}}
+                      </li>
+                    </ul>
+                  </div>
+                </b-card-text>
+              </b-card>
+              <b-card
+                class="skill-pancake-flex mx-3"
+                img-src="~/assets/images/skills/others.png"
+                img-alt="others"
+              >
+                <b-card-title class="text-center">Others</b-card-title>
+                <b-card-text>
+                  <div class="">
+                    <ul>
+                      <li v-for="x in skills.others" :key="x">
+                        <v-icon>mdi-check</v-icon>
+                        {{x}}
+                      </li>
+                    </ul>
+                  </div>
+                </b-card-text>
+              </b-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(144, 164, 174, 0.4)">
+        <div id="tools" class="m-height-full tools container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column my-5 border-radius-8 box-shadow position-relative">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Tools</h4>
+            <div class="tools d-flex justify-content-center flex-wrap">
+              <b-card
+                class="tool-pancake-flex mx-3"
+                :img-src="require(`~/assets/images/tools/${x.image}`)"
+                :img-alt="x.name"
+                v-for="x in tools"
+                :key="x"
+              >
+                <b-card-title class="text-center">{{x.name}}</b-card-title>
+              </b-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
     <Footer/>
     <div class="floating-button">
@@ -206,8 +223,7 @@ export default {
     return {
       scrollTop: 0,
       profileLoad: false,
-      jobLoad: false,
-      buttonLoad: false,
+      nicknameLoad: false,
       snackbar: false,
       copiedText: '',
       skills: {
@@ -235,17 +251,36 @@ export default {
       },
       tab: null,
       tools: [
-        { name: 'Visual Studio Code' },
-        { name: 'Android Studio' },
-        { name: 'Dev-C++' },
-        { name: 'Eclipse' },
-        { name: 'NetBeans' },
-        { name: 'SQL Server Management Studio' },
-        { name: 'Adobe Animate' },
-        { name: 'PHPStorm' },
-        { name: 'Axure' },
-        { name: 'Visual Studio' },
-        { name: 'Unity' },
+        { name: 'Visual Studio Code',
+          image: 'visualstudiocode.svg'
+        },
+        { name: 'Android Studio',
+          image: 'androidstudio.svg'
+        },
+        { name: 'Eclipse',
+          image: 'eclipse.svg'
+        },
+        { name: 'NetBeans',
+          image: 'netbeans.svg'
+        },
+        { name: 'Adobe Animate',
+          image: 'adobeanimate.svg'
+        },
+        { name: 'PHPStorm',
+          image: 'phpstorm.svg'
+        },
+        { name: 'Axure',
+          image: 'axure.svg'
+        },
+        { name: 'Visual Studio',
+          image: 'visualstudio.svg'
+        },
+        { name: 'Unity',
+          image: 'unity.svg'
+        },
+        { name: 'SQL Server Management Studio',
+          image: 'ssms.svg'
+        },
       ]
     }
   },
@@ -262,25 +297,19 @@ export default {
     setScrollTop() {
       this.scrollTop = document.documentElement.scrollTop
     },
-    scrollDown() {
-      document.documentElement.scrollTop = window.innerHeight
-    },
     parallax() {
       let hello = document.querySelector('#hello')
       let name = document.querySelector('#name')
       let circle = document.querySelector('#circle')
-      let job = document.querySelector('#job')
-      let button = document.querySelector('#button')
+      let nickname = document.querySelector('#nickname')
       let scrollPercentage = Math.floor(window.scrollY/window.innerHeight*100)
       
-      hello.style.transform = `translate(-30% ,-${30+scrollPercentage*6}%)`
-      name.style.transform = `translate(-80% ,-${70+scrollPercentage*6}%)`
+      hello.style.transform = `translate(-18% ,-${25+scrollPercentage*6}%)`
+      name.style.transform = `translate(-88% ,-${70+scrollPercentage*6}%)`
       circle.style.transform = `translate(-50% ,-${40+scrollPercentage*2}%)`
-      job.style.transform = `translateY(-${90+scrollPercentage*6}%)`
-      button.style.transform = `translateY(-${scrollPercentage*8}%)`
+      nickname.style.transform = `translateY(-${90+scrollPercentage*6}%)`
 
-      job.style.opacity = 
-      button.style.opacity = 
+      nickname.style.opacity = 
       hello.style.opacity = 
       name.style.opacity = 
       circle.style.opacity = `${100-scrollPercentage*2}%`
@@ -298,12 +327,8 @@ export default {
       }, 1000);
 
       setTimeout(() => {
-        this.jobLoad = true
-      }, 1500);
-
-      setTimeout(() => {
-        this.buttonLoad = true
-      }, 2000);
+        this.nicknameLoad = true
+      }, 1500);      
     },
     copyText(str){
       this.copiedText = "Copied to clipboard: " + str
@@ -334,12 +359,11 @@ export default {
   .outer{
     width: 100%;
     min-height: 100vh;
-    background: #fbe4fc33
+    background: 'white'
   }
 
   .header{
     position: relative;
-    /* background-image: linear-gradient(to top, rgb(251, 228, 252) 0%, #fce4ec 20%, #e3eeff 100%); */
     background-image: linear-gradient(to left, #fce4ec 0%, #fce4ec 50%,#e3eeff 50%, #e3eeff 100%);
     width: 100%;
     height: 100vh;
@@ -356,15 +380,19 @@ export default {
   }
 
   .profile{
-    width: 100px;
-    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    width: 8vw;
+    height: 8vw;
     border: 3px solid #ffffff;
     box-shadow: 0px 5px 20px 0px #aaaaaa;
   }
 
   #circle{
-    width: 200px;
-    height: 200px;
+    width: 16vw;
+    height: 16vw;
+    min-width: 150px;
+    min-height: 150px;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -384,34 +412,42 @@ export default {
     height: 90%;
   }
 
-  .job {
+  .nickname {
     position: absolute;
     top: 90%;
     width: 100%;
-    transform: translateY(-90%)
+    transform: translateY(-90%);
   }
 
-  .job-title{
+  .nickname-text {
+    font-size: calc(20px + 0.25rem);
+  }
+
+  .nickname-title{
     font-weight: 700;
-    font-size: 25px;
+    font-size: calc(20px + 0.25rem);
   }
 
   #hello {
+    height: 4vw;
+    min-height: 30px;
     position: absolute;
-    top: 30%;
-    left: 30%;
-    transform: translate(-30%, -30%);
+    top: 25%;
+    left: 18%;
+    transform: translate(-18%, -25%);
   }
 
   #name {
+    height: 4vw;
+    min-height: 30px;
     position: absolute;
     top: 70%;
-    left: 80%;
-    transform: translate(-80%, -70%);
+    left: 88%;
+    transform: translate(-88%, -70%);
   }
 
   .m-height-full{
-    min-height: 100vh;
+    min-height: 120vh;
   }
 
   .no-outline{
@@ -432,9 +468,9 @@ export default {
 
   .hello-slide-fade-enter, .hello-slide-fade-leave-to{
     position: absolute !important;
-    top: 30% !important;
-    left: 26% !important;
-    transform: translate(-26%, -30%) !important;
+    top: 25% !important;
+    left: 14% !important;
+    transform: translate(-14%, -25%) !important;
     opacity: 0 !important;
   }
 
@@ -445,16 +481,16 @@ export default {
   .name-slide-fade-enter, .name-slide-fade-leave-to{
     position: absolute !important;
     top: 70% !important;
-    left: 84% !important;
-    transform: translate(-84%, -70%) !important;
+    left: 92% !important;
+    transform: translate(-92%, -70%) !important;
     opacity: 0 !important;
   }
 
-  .job-slide-fade-enter-active, .job-slide-fade-leave-active{
+  .nickname-slide-fade-enter-active, .nickname-slide-fade-leave-active{
     transition: all 1.5s ease !important;
   }
 
-  .job-slide-fade-enter, .job-slide-fade-leave-to{
+  .nickname-slide-fade-enter, .nickname-slide-fade-leave-to{
     top: 85% !important;
     transform: translateY(-85%) !important;
     opacity: 0 !important;
@@ -464,24 +500,17 @@ export default {
     letter-spacing: 0.15em;
   }
 
-  .title{
-    font-size: 25px;
-    font-weight: 600;
-  }
-
-  .skill-pancake-flex{
+  .skill-pancake-flex, .tool-pancake-flex{
     flex: 0 1 300px;
     margin: 2% 0;
   }
-
-  .v-tabs-bar {
-    background: transparent !important;
-  }
-
-  .v-tab{
-    text-transform: none !important;
-    font-size: large;
-    font-weight: bolder;
+  
+  .tool-pancake-flex {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .tools {
@@ -496,8 +525,8 @@ export default {
     box-shadow: 0px 5px 20px 0px #dddddd;
   }
 
-  #hello, #name, #circle, #job, #button {
-    transition-duration: 0.05s;
+  #hello, #name, #circle, #nickname {
+    transition-duration: 0.2s;
   }
 
   .text-pink {
@@ -532,11 +561,12 @@ export default {
     box-shadow: none !important;
   }
 
-  #scroll-down-icon{
-    transition: all 0.2s ease
+  .tool-pancake-flex img {
+    height: 50px;
+    margin:4% auto 0 auto
   }
 
-  #scroll-down-icon:hover{
-    color: #464646 !important
+  .card-body {
+    flex: none;
   }
 </style>

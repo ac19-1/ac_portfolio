@@ -1,39 +1,40 @@
 <template>
   <div id="nav">
-    <div class="w-50 h-100">
-			<a href="#about" class="text-dark nav-logo text-uppercase font-weight-bold">about</a>
-			<a href="#skills-overview" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</a>
-		</div>
-		<div class="w-50">
-			<!-- <a href="" class="text-dark nav-actions text-uppercase font-weight-bold">play ground</a> -->
+    <div class="w-100 h-100">
+			<button @click="scrollTo('about')" class="text-dark nav-logo text-uppercase font-weight-bold">about</button>
+			<button @click="scrollTo('experience')" class="text-dark nav-logo text-uppercase font-weight-bold">experience</button>
+			<button @click="scrollTo('skills-overview')" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</button>
+			<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
 		</div>
   </div>
 </template>
 
 <script>
 export default {
+	name:"NavBar",
 	data() {
 		return {
-			scrollTop: 0,
+			
 		}
 	},
 
 	methods: {
 		scrollHandler() {
-			this.setScrollTop()
 			this.setNavBar()
-    },
-		setScrollTop() {
-      this.scrollTop = document.documentElement.scrollTop
 		},
 		setNavBar() {
 			let nav = document.querySelector('#nav')
-			this.scrollTop == 0 ? nav.style.background = 'transparent' : nav.style.background ='#ffd2d2'
+			document.documentElement.scrollTop == 0 ? nav.style.background = 'transparent' : nav.style.background ='#ffd2d2'
+		},
+		scrollTo(element) {
+				var e = document.getElementById(element)
+				e.scrollIntoView()
 		}
 	},
 
 	mounted() {
 		window.addEventListener('scroll', this.scrollHandler)
+		this.setNavBar()
 	}
 }
 </script>
@@ -42,7 +43,7 @@ export default {
 	#nav{
 		display: flex;
 		justify-content: space-between;
-		padding: 1.2% 3%;
+		padding: 1% 3%;
 		position: fixed;
 		top: 0;
 		z-index: 10000;
@@ -50,14 +51,18 @@ export default {
 		transition: all 0.2s ease;
 	}
 
-	#nav a{
-		padding: 1% 2%;
+	#nav button{
+		padding: 0.5% 2%;
 		transition: all 0.2s ease;
 	}
 
-	#nav a:hover {
+	#nav button:hover {
 		text-decoration: none;
 		background-color: #ffffff;
 		border-radius: 8px;
+	}
+
+	#nav button:focus, #nav button:active {
+		outline: none
 	}
 </style>

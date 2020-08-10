@@ -10,6 +10,10 @@
     scroll-behavior: smooth;
   }
 
+  * {
+    font-size: calc(13px + 0.25rem);
+  }
+
   ::-webkit-scrollbar{
     width: 8px;
   }

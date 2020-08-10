@@ -29,6 +29,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+	name:"Footer",
 	computed: mapGetters({
     icons: 'constants/get'
   }),
