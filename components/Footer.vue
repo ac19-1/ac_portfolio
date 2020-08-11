@@ -1,6 +1,7 @@
 <template>
   <v-footer class="footer" padless>
 		<div class="w-100 p-3" style="background:#ffd2d2">
+      <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, how colorful do you want your website to be?</div>
 			<div class="d-flex justify-content-center">
 				<div >
 					<a href="mailto:angelaaudreychen15@gmail.com" target="_blank" class="icon-button px-2">
@@ -19,8 +20,15 @@
 				</div>
 			</div>
 			<hr>
-			<div class="d-flex justify-content-center font-weight-bold">
-				Copyright &copy; 2020{{new Date().getFullYear() != '2020' ? ' - ' + new Date().getFullYear() : '' }} Audrey Chen
+			<div>
+				<p class="text-center">
+          Made by <font class="font-weight-bold">Audrey Chen</font> with a perfect combination of <font class="font-weight-bold">NuxtJs</font> and <font class="font-weight-bold">♡</font>
+        </p>
+        <div class="text-center">
+          <div class="font-weight-bold">Special thanks to:</div>
+          <div><a href="https://fontawesome.com/">Font Awesome</a></div>
+          <div><a href="https://materialdesignicons.com/">Material Design Icons</a></div>
+        </div>
 			</div>
 		</div>
 	</v-footer>

@@ -29,9 +29,9 @@
     <div class="position-relative">
 
       <div style="background:rgba(105, 240, 174, 0.4)">
-        <div id="about" class="m-height-full about container d-flex justify-content-center align-items-center p-3">
-          <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative my-5">
-            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">About Me</h4>
+        <div id="about" class="about container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px;">About Me</h4>
             <div style="margin:2% 0;" class="w-100">
               <div>
                 <div class="d-flex justify-content-center">
@@ -40,7 +40,7 @@
                   </div>
                 </div>
                 <div class="profile-detail text-center">
-                  <input type="text" style="opacity:0; position:absolute; left:-99999px" id="myInput">
+                  <input type="text" readonly style="opacity:0; position:absolute; left:-99999px" id="myInput">
                   <label for="" class="text-uppercase font-weight-bold">Audrey Chen</label>
                   <div class="d-flex justify-content-center align-items-center icon w-100">
                     <b-button
@@ -70,7 +70,7 @@
               <div class="profile-summary my-4">
                 <div>
                   <h4 class="font-weight-bold">Who am I?</h4>
-                  <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job as a <font class="text-dark font-weight-bold">front-end developer</font>. I love building a <font class="text-pink">beautiful</font> website and of course, seeing all things work perfectly is what I want.</p>
+                  <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job as a <font class="text-dark font-weight-bold">front-end developer</font>. I love building a <font class="text-pink">beautiful</font> website. I like to make it simple and colorful, and of course, works perfectly.</p>
                 </div>
               </div>
             </div>
@@ -79,8 +79,8 @@
       </div>
     
       <div style="background:rgba(130, 177, 255, 0.4)">
-        <div id="experience" class="m-height-full experience container d-flex justify-content-center align-items-center p-3">
-          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column my-5 border-radius-8 box-shadow position-relative w-100">
+        <div id="experience" class="experience container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative w-100" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Experience</h4>
             <div class="d-flex justify-content-center flex-wrap w-100">
               <v-img
@@ -92,7 +92,7 @@
               <div class="w-100">
                 <h4 class="font-weight-bold">What I do?</h4>
                 <p class="text-justify">
-                  As a teaching assistant, my main job is teaching college students. But besides that, I also make some cases for students and research for new things. During my time as a teaching assistant, I found my passion for being a website designer and builder, and I love making things look simply beautiful and perfect.
+                  As a teaching assistant, our main job is teaching college students. But we also make some cases for students and research for new things. We also do some projects to improve our skills such as TPA (Tes Progresif Asisten / Assistant Progresive Test) and RIG (Research Interest Group). During my time as a teaching assistant, I found my passion for being a website designer and builder, and I love making things look simply beautiful and perfect.
                 </p>
               </div>
             </div>
@@ -101,8 +101,8 @@
       </div>
 
       <div style="background:rgba(255, 255, 141, 0.4)">
-        <div id="skills-overview" class="m-height-full skills-overview container d-flex justify-content-center align-items-center p-3">
-          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative my-5">
+        <div id="skills-overview" class="skills-overview container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h4>
             <div class="skills d-flex justify-content-center flex-wrap">
               <b-card
@@ -115,7 +115,6 @@
                   <div class="">
                     <ul>
                       <li v-for="x in skills.frontend" :key="x">
-                        <v-icon>mdi-check</v-icon>
                         {{x}}
                       </li>
                     </ul>
@@ -132,7 +131,6 @@
                   <div class="">
                     <ul>
                       <li v-for="x in skills.backend" :key="x">
-                        <v-icon>mdi-check</v-icon>
                         {{x}}
                       </li>
                     </ul>
@@ -149,7 +147,6 @@
                   <div class="">
                     <ul>
                       <li v-for="x in skills.others" :key="x">
-                        <v-icon>mdi-check</v-icon>
                         {{x}}
                       </li>
                     </ul>
@@ -162,8 +159,8 @@
       </div>
 
       <div style="background:rgba(144, 164, 174, 0.4)">
-        <div id="tools" class="m-height-full tools container d-flex justify-content-center align-items-center p-3">
-          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column my-5 border-radius-8 box-shadow position-relative">
+        <div id="tools" class="tools container d-flex justify-content-center align-items-center p-3">
+          <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Tools</h4>
             <div class="tools d-flex justify-content-center flex-wrap">
               <b-card
@@ -228,25 +225,25 @@ export default {
       copiedText: '',
       skills: {
         frontend: [
-          'HTML/CSS/SASS',
-          'JavaScript/TypeScript',
+          'HTML / CSS / SASS',
+          'JavaScript / TypeScript',
           'jQuery',
-          'ReactJS/ReactTS',
-          'Vue.js/Nuxt.js',
+          'ReactJS / ReactTS',
+          'Vue.js / Nuxt.js',
           'Vuetify',
-          'Bootstrap/Bootstrap-Vue',
+          'Bootstrap / Bootstrap-Vue',
         ],
         backend: [
-          'MSSQL/MySQL',
-          'PHP/Laravel',
+          'MSSQL / MySQL',
+          'PHP / Laravel',
           'Firebase',
           'SQLite',
         ],
         others: [
-          'C/C++',
+          'C / C++',
           'C#',
-          'UX/Prototyping',
-          'Java Swing/Android',
+          'UX / Prototyping',
+          'Java Swing / Android',
         ]
       },
       tab: null,
@@ -370,7 +367,12 @@ export default {
   }
 
   .skills-overview li {
-    list-style-type: none;
+    list-style-type: circle; 
+    list-style-position: outside;
+    color: #525252;
+    font-weight: 500;
+    margin: 0 5%;
+    padding: 0 3%
   }
 
   #circle, .profile{
@@ -568,5 +570,22 @@ export default {
 
   .card-body {
     flex: none;
+  }
+
+  @media screen  and (max-width: 800px){
+    #about, #experience, #skills-overview, #tools {
+      padding: 0 !important;
+      width: 100% !important;
+      margin: 0 !important;
+      max-width: fit-content !important;
+    }
+
+    #about > div, #experience > div, #skills-overview > div, #tools > div {
+      border-radius: 0 !important;
+    }
+
+    .floating-button {
+      display: none
+    }
   }
 </style>
