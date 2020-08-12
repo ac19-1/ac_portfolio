@@ -29,7 +29,7 @@
     <div class="position-relative">
 
       <div style="background:rgba(105, 240, 174, 0.4)">
-        <div id="about" class="about container d-flex justify-content-center align-items-center p-3">
+        <div id="about" class="white-card about container d-flex justify-content-center align-items-center p-3">
           <div class="p-5 about d-flex justify-content-center flex-wrap bg-white border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px;">About Me</h4>
             <div style="margin:2% 0;" class="w-100">
@@ -79,7 +79,7 @@
       </div>
     
       <div style="background:rgba(130, 177, 255, 0.4)">
-        <div id="experience" class="experience container d-flex justify-content-center align-items-center p-3">
+        <div id="experience" class="white-card experience container d-flex justify-content-center align-items-center p-3">
           <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative w-100" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Experience</h4>
             <div class="d-flex justify-content-center flex-wrap w-100">
@@ -101,7 +101,7 @@
       </div>
 
       <div style="background:rgba(255, 255, 141, 0.4)">
-        <div id="skills-overview" class="skills-overview container d-flex justify-content-center align-items-center p-3">
+        <div id="skills-overview" class="white-card skills-overview container d-flex justify-content-center align-items-center p-3">
           <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Skills Overview</h4>
             <div class="skills d-flex justify-content-center flex-wrap">
@@ -159,7 +159,7 @@
       </div>
 
       <div style="background:rgba(144, 164, 174, 0.4)">
-        <div id="tools" class="tools container d-flex justify-content-center align-items-center p-3">
+        <div id="tools" class="white-card tools container d-flex justify-content-center align-items-center p-3">
           <div class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
             <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Tools</h4>
             <div class="tools d-flex justify-content-center flex-wrap">
@@ -172,6 +172,63 @@
               >
                 <b-card-title class="text-center">{{x.name}}</b-card-title>
               </b-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(117, 117, 117, 0.4)">
+        <div id="works" class="white-card works container d-flex justify-content-center align-items-center p-3">
+          <div class="w-100 p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative" style="margin: 10vh 0">
+            <h4 class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3" style="top:-35px">Some of my works</h4>
+            <div class="works d-flex justify-content-center flex-wrap w-100">
+              <v-expansion-panels
+                hover
+                accordion
+                multiple
+                v-model="works_panel"
+              >
+                <v-expansion-panel>
+                  <v-expansion-panel-header
+                    class="font-weight-bold expansion-header"
+                    expand-icon=""
+                  >Website</v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <div class="d-flex justify-content-center flex-wrap">
+                      <b-card
+                        class="work-pancake-flex mx-3"
+                        v-for="x in works.website"
+                        :key="x"
+                        :title="x.name"
+                        @click="goToDetail('website',x.id)"
+                      >
+                        <div class="work-image" :style="`background-image: url(` + require(`~/assets/images/projects/${x.type}/${x.folder}/${x.image.name}`) + `)`">
+                        </div>
+                      </b-card>
+                    </div>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+                <v-expansion-panel>
+                  <v-expansion-panel-header
+                    class="font-weight-bold expansion-header"
+                    expand-icon=""
+                  >Non-website</v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <div class="d-flex justify-content-center flex-wrap">
+                      <b-card
+                        class="work-pancake-flex mx-3"
+                        v-for="x in works.non_website"
+                        :key="x"
+                        :title="x.name"
+                        @click="goToDetail('non-website',x.id)"
+                      >
+                        <div class="work-image" :style="`background-image: url(` + require(`~/assets/images/projects/${x.type}/${x.folder}/${x.image.name}`) + `)`">
+                        </div>
+                      </b-card>
+                    </div>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
             </div>
           </div>
         </div>
@@ -210,12 +267,17 @@ import { Footer } from "~/components/Footer";
 import { mapGetters } from "vuex";
 export default {
   computed: mapGetters({
-    icons: 'constants/get'
+    icons: 'constants/get',
+    skills: 'skills/get',
+    works: 'works/get',
+    tools: 'tools/get'
   }),
+
   components:{
     NavBar,
     Footer
   },
+
   data() {
     return {
       scrollTop: 0,
@@ -223,62 +285,8 @@ export default {
       nicknameLoad: false,
       snackbar: false,
       copiedText: '',
-      skills: {
-        frontend: [
-          'HTML / CSS / SASS',
-          'JavaScript / TypeScript',
-          'jQuery',
-          'ReactJS / ReactTS',
-          'Vue.js / Nuxt.js',
-          'Vuetify',
-          'Bootstrap / Bootstrap-Vue',
-        ],
-        backend: [
-          'MSSQL / MySQL',
-          'PHP / Laravel',
-          'Firebase',
-          'SQLite',
-        ],
-        others: [
-          'C / C++',
-          'C#',
-          'UX / Prototyping',
-          'Java Swing / Android',
-        ]
-      },
+      works_panel: [0,1],
       tab: null,
-      tools: [
-        { name: 'Visual Studio Code',
-          image: 'visualstudiocode.svg'
-        },
-        { name: 'Android Studio',
-          image: 'androidstudio.svg'
-        },
-        { name: 'Eclipse',
-          image: 'eclipse.svg'
-        },
-        { name: 'NetBeans',
-          image: 'netbeans.svg'
-        },
-        { name: 'Adobe Animate',
-          image: 'adobeanimate.svg'
-        },
-        { name: 'PHPStorm',
-          image: 'phpstorm.svg'
-        },
-        { name: 'Axure',
-          image: 'axure.svg'
-        },
-        { name: 'Visual Studio',
-          image: 'visualstudio.svg'
-        },
-        { name: 'Unity',
-          image: 'unity.svg'
-        },
-        { name: 'SQL Server Management Studio',
-          image: 'ssms.svg'
-        },
-      ]
     }
   },
 
@@ -334,6 +342,9 @@ export default {
       copyText.select();
       document.execCommand("copy");
       this.snackbar = true
+    },
+    goToDetail(type, id) {
+      this.$router.push('/works/'+type+'/'+id)
     }
   },
 
@@ -347,12 +358,6 @@ export default {
 </script>
 
 <style>
-  *{
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif !important;
-  }
-
   .outer{
     width: 100%;
     min-height: 100vh;
@@ -502,12 +507,21 @@ export default {
     letter-spacing: 0.15em;
   }
 
-  .skill-pancake-flex, .tool-pancake-flex{
+  .skill-pancake-flex, .tool-pancake-flex, .work-pancake-flex{
     flex: 0 1 300px;
     margin: 2% 0;
   }
+
+  .work-pancake-flex {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .work-pancake-flex:hover {
+    box-shadow: 0px 5px 15px 0px #cccccc;
+  }
   
-  .tool-pancake-flex {
+  .tool-pancake-flex{
     min-height: 200px;
     display: flex;
     align-items: center;
@@ -568,19 +582,35 @@ export default {
     margin:4% auto 0 auto
   }
 
+  .work-image {
+    height: 200px;
+    background-size: cover;
+    background-position: top;
+    border-radius: 3px;
+    border: 1px #e5e5e5 solid;
+  }
+
   .card-body {
     flex: none;
   }
 
+  .work-pancake-flex .card-title {
+    text-align: center;
+  }
+
+  .expansion-header {
+    font-size: calc(15px + 0.25rem);
+  }
+
   @media screen  and (max-width: 800px){
-    #about, #experience, #skills-overview, #tools {
+    .white-card {
       padding: 0 !important;
       width: 100% !important;
       margin: 0 !important;
       max-width: fit-content !important;
     }
 
-    #about > div, #experience > div, #skills-overview > div, #tools > div {
+    .white-card > div {
       border-radius: 0 !important;
     }
 

@@ -5,10 +5,11 @@
 			<button @click="scrollTo('experience')" class="text-dark nav-logo text-uppercase font-weight-bold">experience</button>
 			<button @click="scrollTo('skills-overview')" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</button>
 			<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
+      <button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
 		</div>
 		<div id="smallscreen" class="w-100">
 			<button @click="toggleMenu" class="text-dark nav-logo text-uppercase font-weight-bold">menu</button>
-			<transition name="navbar-slide-down">
+			<transition name="navbar-transition">
 				<div id="navbarmenu" v-if="showNav">
 					<hr style="margin:8px">
 					<div>
@@ -22,6 +23,9 @@
 					</div>
 					<div>
 						<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
+					</div>
+          <div>
+						<button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
 					</div>
 				</div>
 			</transition>
@@ -48,17 +52,25 @@ export default {
 		},
 		scrollTo(element) {
 				var e = document.getElementById(element)
-				e.scrollIntoView()
+				if(e !== null) e.scrollIntoView()
 		},
 		toggleMenu() {
 			let nav = document.querySelector('#nav')
 			this.showNav = !this.showNav
 			this.showNav ? nav.style.background = '#ffd2d2' : this.setNavBar()
-		}
+    },
+    resizeHandler() {
+      if(this.showNav && window.innerWidth >= 800) {
+        let nav = document.querySelector('#nav')
+        this.showNav = !this.showNav
+        this.showNav ? nav.style.background = '#ffd2d2' : nav.style.background = 'transparent'
+      }
+    }
 	},
 
 	mounted() {
 		window.addEventListener('scroll', this.scrollHandler)
+    window.addEventListener('resize', this.resizeHandler)
 		this.setNavBar()
 	}
 }
@@ -91,13 +103,11 @@ export default {
 		outline: none
 	}
 
-	.navbar-slide-down-enter-active{
+	.navbar-transition-enter-active{
     transition: all 0.2s ease !important;
   }
 
-  .navbar-slide-down-enter, .navbar-slide-down-leave-to{
-    /* top: 200% !important;
-    transform: translateY(-200%) !important; */
+  .navbar-transition-enter, .navbar-transition-leave-to{
 		opacity: 0 !important;
   }
 

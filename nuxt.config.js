@@ -83,6 +83,6 @@ export default {
   loadingIndicator:{
     name: 'folding-cube',
     color: '#666666',
-    background: '#fbe4fc33'
+    background: 'rgba(251, 228, 252, 0.2)'
   },
 }
