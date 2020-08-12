@@ -110,7 +110,7 @@ export default {
   .outer{
     width: 100%;
     min-height: 100vh;
-    background: rgba(251, 228, 252, 0.2)
+    background: rgba(251, 228, 252, 0.5)
   }
 
   .box-shadow {
