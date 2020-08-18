@@ -47,6 +47,7 @@
         <p class="text-justify">You can access the website <a :href="work.link" target="_blank">here</a>.</p>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -56,10 +57,7 @@ import { Footer } from "~/components/Footer";
 import { mapGetters } from "vuex";
 export default {
   computed: mapGetters({
-    icons: 'constants/get',
-    skills: 'skills/get',
     works: 'works/get',
-    tools: 'tools/get'
   }),
 
   components:{

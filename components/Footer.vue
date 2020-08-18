@@ -1,7 +1,7 @@
 <template>
   <v-footer class="footer" padless>
 		<div class="w-100 p-3" style="background:#ffd2d2">
-      <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, how colorful do you want your website to be?</div>
+      <!-- <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, how colorful do you want your website to be?</div> -->
 			<div class="d-flex justify-content-center">
 				<div >
 					<a href="mailto:angelaaudreychen15@gmail.com" target="_blank" class="icon-button px-2">
@@ -26,8 +26,9 @@
         </p>
         <div class="text-center">
           <div class="font-weight-bold">Special thanks to:</div>
-          <div><a href="https://fontawesome.com/">Font Awesome</a></div>
-          <div><a href="https://materialdesignicons.com/">Material Design Icons</a></div>
+          <div><a href="https://fontmeme.com/" target="_blank">Font Meme</a></div>
+          <div><a href="https://fontawesome.com/" target="_blank">Font Awesome</a></div>
+          <div><a href="https://materialdesignicons.com/" target="_blank">Material Design Icons</a></div>
         </div>
 			</div>
 		</div>

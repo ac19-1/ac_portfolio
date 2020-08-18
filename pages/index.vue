@@ -70,7 +70,9 @@
               <div class="profile-summary my-4">
                 <div>
                   <h4 class="font-weight-bold">Who am I?</h4>
-                  <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program and I'm looking for the first job as a <font class="text-dark font-weight-bold">front-end developer</font>. I love building a <font class="text-pink">beautiful</font> website. I like to make it simple and colorful, and of course, works perfectly.</p>
+                  <p class="text-justify">Hi! I'm a college student at Bina Nusantara University majoring in Computer Science program.
+                    <!-- and I'm looking for the first job as a <font class="text-dark font-weight-bold">front-end developer</font>.  -->
+                    I love building a <font class="text-pink">beautiful</font> website. I like to make it simple and colorful, and of course, works perfectly.</p>
                 </div>
               </div>
             </div>

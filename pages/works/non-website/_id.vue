@@ -42,6 +42,7 @@
         <p class="text-justify">{{work.description}}</p>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -51,10 +52,7 @@ import { Footer } from "~/components/Footer";
 import { mapGetters } from "vuex";
 export default {
   computed: mapGetters({
-    icons: 'constants/get',
-    skills: 'skills/get',
     works: 'works/get',
-    tools: 'tools/get'
   }),
 
   components:{
