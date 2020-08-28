@@ -36,8 +36,8 @@ export const state = () => ({
             description: 'Edit Category Page'
           },
         ],
-        description: 'AppetiCrez is a simple website for NAR20-2 (New Assistant Recruitment for 20-2 generation) case about CRUD in Laravel. All of the data in this website are dummy data and are stored in MySQL database, and this website is not made for commercial purposes. This website is about a cafe menu management, where we can insert, edit, delete, and view all the products and categories.',
-        link: null
+        description: 'AppetiCrez is a simple website for NAR20-2 (New Assistant Recruitment for 20-2 generation) case about CRUD in Laravel. All of the data in this website are dummy data and are stored in MySQL database, and this website is not made for commercial purposes. This website is about a cafe menu management, where we can insert, edit, delete, and view all the products and categories. This website is not responsive and using 1366x768 device is recommended.',
+        link: 'http://appeticrez.dreyychen.com'
       },
       { 
         id: 'clovery',
@@ -70,8 +70,8 @@ export const state = () => ({
             description: 'Manage User Page'
           },
         ],
-        description: 'Clovery is a simple website for demonstrating Middleware and Custom Error Page in Laravel. All the data and images in this website are dummy and are stored in MySQL database, and this website is not made for commercial purposes. This website is about an ornamental plant shop, where the guest only can visit the home page, the user can visit home and products page, and admin can visit all pages. You can log in as admin with \"audrey@clovery.com\" as the email address and \"audrey123\" as the password.',
-        link: null
+        description: 'Clovery is a simple website for demonstrating Middleware and Custom Error Page in Laravel. All the data and images in this website are dummy and are stored in MySQL database, and this website is not made for commercial purposes. This website is about an ornamental plant shop, where the guest only can visit the home page, the user can visit home and products page, and admin can visit all pages. You can log in as admin with \"audrey@clovery.com\" as the email address and \"audrey123\" as the password. This website is not responsive and using 1366x768 device is recommended.',
+        link: 'http://clovery.dreyychen.com'
       }
     ],
     non_website: [
