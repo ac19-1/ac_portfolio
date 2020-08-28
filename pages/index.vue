@@ -267,7 +267,16 @@
 import { NavBar } from "~/components/NavBar";
 import { Footer } from "~/components/Footer";
 import { mapGetters } from "vuex";
+import ogImage from '@/assets/images/logo/logo.png'
 export default {
+  head () {
+    return {
+      meta: [
+        { hid: 'og:image', name: 'og:image', content: ogImage }
+      ]
+    }
+  },
+
   computed: mapGetters({
     icons: 'constants/get',
     skills: 'skills/get',
