@@ -4,6 +4,19 @@
   </div>
 </template>
 
+<script>
+import ogImage from '@/assets/images/logo/logo.png'
+export default {
+  head () {
+    return {
+      meta: [
+        { hid: 'og:image', property: 'og:image', content: this.BASE_URL+ ogImage }
+      ]
+    }
+  },
+}
+</script>
+
 <style>
   html{
     overflow-y: auto !important;
