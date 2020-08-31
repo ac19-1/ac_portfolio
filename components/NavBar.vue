@@ -6,6 +6,7 @@
 			<button @click="scrollTo('skills-overview')" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</button>
 			<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
       <button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
+			<button @click="() => {this.$router.push('/extras')}" class="text-dark nav-logo text-uppercase font-weight-bold">extras</button>
 		</div>
 		<div id="smallscreen" class="w-100">
 			<button @click="toggleMenu" class="text-dark nav-logo text-uppercase font-weight-bold">menu</button>
@@ -26,6 +27,9 @@
 					</div>
           <div>
 						<button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
+					</div>
+					<div>
+						<button @click="() => {this.$router.push('/extras')}" class="text-dark nav-logo text-uppercase font-weight-bold">extras</button>
 					</div>
 				</div>
 			</transition>
