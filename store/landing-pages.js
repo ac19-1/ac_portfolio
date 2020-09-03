@@ -1,6 +1,11 @@
 export const state = () => ({
 	tools: [
 		{
+			name: 'Sweet Day',
+			image: 'sweetday.png',
+			description: 'A landing page for birthday cake website.',
+		},
+		{
 			name: 'Travellya',
 			image: 'travellya.png',
 			description: 'A landing page for trip planner website.',
@@ -24,6 +29,11 @@ export const state = () => ({
 			name: 'Aurastyle',
 			image: 'aurastyle.png',
 			description: 'A landing page for fashion website.',
+		},
+		{
+			name: 'Event Planner',
+			image: 'eventplanner.png',
+			description: 'A landing page for calendar and event planner website.',
 		},
 	],
 })
