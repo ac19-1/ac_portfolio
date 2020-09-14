@@ -1,11 +1,7 @@
 <template>
   <div id="nav">
     <div id="bigscreen" class="w-100">
-			<button @click="scrollTo('about')" class="text-dark nav-logo text-uppercase font-weight-bold">about</button>
-			<button @click="scrollTo('experience')" class="text-dark nav-logo text-uppercase font-weight-bold">experience</button>
-			<button @click="scrollTo('skills-overview')" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</button>
-			<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
-      <button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
+			<button @click="() => {this.$router.push('/')}" class="text-dark nav-logo text-uppercase font-weight-bold">home</button>
 			<button @click="() => {this.$router.push('/extras')}" class="text-dark nav-logo text-uppercase font-weight-bold">extras</button>
 		</div>
 		<div id="smallscreen" class="w-100">
@@ -14,19 +10,7 @@
 				<div id="navbarmenu" v-if="showNav">
 					<hr style="margin:8px">
 					<div>
-						<button @click="scrollTo('about')" class="text-dark nav-logo text-uppercase font-weight-bold">about</button>
-					</div>
-					<div>
-						<button @click="scrollTo('experience')" class="text-dark nav-logo text-uppercase font-weight-bold">experience</button>
-					</div>
-					<div>
-						<button @click="scrollTo('skills-overview')" class="text-dark nav-logo text-uppercase font-weight-bold">skills overview</button>
-					</div>
-					<div>
-						<button @click="scrollTo('tools')" class="text-dark nav-logo text-uppercase font-weight-bold">tools</button>
-					</div>
-          <div>
-						<button @click="scrollTo('works')" class="text-dark nav-logo text-uppercase font-weight-bold">works</button>
+						<button @click="() => {this.$router.push('/')}" class="text-dark nav-logo text-uppercase font-weight-bold">home</button>
 					</div>
 					<div>
 						<button @click="() => {this.$router.push('/extras')}" class="text-dark nav-logo text-uppercase font-weight-bold">extras</button>
@@ -84,8 +68,10 @@ export default {
 	#nav{
 		display: flex;
 		justify-content: space-between;
-		padding: 1% 3%;
+		align-items: center;
+		padding: 1.5vh 3%;
 		position: fixed;
+		min-height: 10vh;
 		top: 0;
 		z-index: 10000;
 		width: 100%;

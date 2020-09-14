@@ -1,8 +1,6 @@
 <template>
   <div class="outer">
-    <div id="nav">
-      <button @click="() => {this.$router.push('/')}" class="text-dark nav-logo text-uppercase font-weight-bold">back</button>
-    </div>
+    <nav-bar />
     <div class="work_detail" v-if="work !== null && work !== undefined">
       <div id="detail_title" class="d-flex justify-content-center">
         <h4 class="font-weight-bold">{{work.name}}</h4>
@@ -47,6 +45,7 @@
 </template>
 
 <script>
+import { NavBar } from "~/components/NavBar";
 import { Footer } from "~/components/Footer";
 import { mapGetters } from "vuex";
 export default {
@@ -55,7 +54,8 @@ export default {
   }),
 
   components:{
-    Footer
+    Footer,
+    NavBar
   },
 
   data() {
@@ -108,34 +108,9 @@ export default {
     box-shadow: 0px 5px 20px 0px #dddddd;
   }
 
-  #nav{
-		display: flex;
-		justify-content: space-between;
-		padding: 1% 3%;
-		position: fixed;
-		top: 0;
-		z-index: 10000;
-		width: 100%;
-		transition: all 0.2s ease;
-	}
-
-	#nav button{
-		padding: 0.5% 2%;
-		transition: all 0.2s ease;
-	}
-
-	#nav button:hover {
-		text-decoration: none;
-		background-color: #ffffff;
-		border-radius: 8px;
-	}
-
-	#nav button:focus, #nav button:active, .v-btn:focus, .v-btn:active {
-		outline: none
-	}
-
   .work_detail {
-    padding-top: 15vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
   }
 
   #detail_title > h4 {

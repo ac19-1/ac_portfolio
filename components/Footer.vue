@@ -1,8 +1,8 @@
 <template>
   <v-footer class="footer" padless>
 		<div class="w-100 p-3" style="background:#ffd2d2">
-      <!-- <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, how colorful do you want your website to be?</div> -->
-      <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, are you interested?</div>
+      <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, how colorful do you want your website to be?</div>
+      <!-- <div class="d-flex justify-content-center font-weight-bold mb-3 text-center">So, are you interested?</div> -->
 			<div class="d-flex justify-content-center">
 				<div >
 					<a href="mailto:angelaaudreychen15@gmail.com" target="_blank" class="icon-button px-2">

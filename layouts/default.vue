@@ -28,6 +28,8 @@ export default {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
   }
 
   ::-webkit-scrollbar{
