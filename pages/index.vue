@@ -595,7 +595,7 @@ export default {
 .skill-pancake-flex,
 .tool-pancake-flex,
 .work-pancake-flex {
-  flex: 0 1 300px;
+  flex: 0 1 285px;
   margin: 2% 0;
 }
 
