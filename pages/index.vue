@@ -732,7 +732,6 @@ export default {
     padding: 0 !important;
     width: 100% !important;
     margin: 0 !important;
-    min-width: fit-content !important;
   }
 
   .white-card > div {
