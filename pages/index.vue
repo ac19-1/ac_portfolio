@@ -246,14 +246,14 @@
               style="top:-35px"
             >Some of my works</h4>
             <div class="works d-flex justify-content-center flex-wrap w-100">
-              <v-expansion-panels hover accordion multiple v-model="works_panel">
-                <v-expansion-panel>
+              <v-expansion-panels class="w-100" hover accordion multiple v-model="works_panel">
+                <v-expansion-panel class="w-100">
                   <v-expansion-panel-header
-                    class="font-weight-bold expansion-header"
+                    class="font-weight-bold expansion-header w-100"
                     expand-icon
                   >Website</v-expansion-panel-header>
                   <v-expansion-panel-content>
-                    <div class="d-flex justify-content-center flex-wrap">
+                    <div class="d-flex justify-content-center flex-wrap w-100">
                       <b-card
                         class="work-pancake-flex mx-3"
                         v-for="x in works.website"
@@ -292,6 +292,34 @@
                   </v-expansion-panel-content>
                 </v-expansion-panel>
               </v-expansion-panels>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(255, 255, 141, 0.4)">
+        <div
+          id="certificates"
+          class="white-card certificates container d-flex justify-content-center align-items-center p-3"
+        >
+          <div
+            class="p-5 bg-white d-flex justify-content-center align-items-center flex-wrap flex-column border-radius-8 box-shadow position-relative"
+            style="margin: 10vh 0"
+          >
+            <h4
+              class="font-weight-bold position-absolute bg-white box-shadow border-radius-8 p-3"
+              style="top:-35px"
+            >Certificates</h4>
+            <div class="certificates d-flex justify-content-center flex-wrap">
+              <b-card
+                class="certificate-pancake-flex mx-3"
+                :img-src="require(`~/assets/images/certificates/${x.image}`)"
+                :img-alt="x.name"
+                v-for="x in certificates"
+                :key="x"
+              >
+                <b-card-title class="text-center">{{x.name}}</b-card-title>
+              </b-card>
             </div>
           </div>
         </div>
@@ -336,7 +364,8 @@ export default {
     icons: "constants/get",
     skills: "skills/get",
     works: "works/get",
-    tools: "tools/get"
+    tools: "tools/get",
+    certificates: "certificates/get"
   }),
 
   components: {
@@ -594,6 +623,7 @@ export default {
 
 .skill-pancake-flex,
 .tool-pancake-flex,
+.certificate-pancake-flex,
 .work-pancake-flex {
   flex: 0 1 285px;
   margin: 2% 0;
@@ -702,7 +732,7 @@ export default {
     padding: 0 !important;
     width: 100% !important;
     margin: 0 !important;
-    max-width: fit-content !important;
+    min-width: fit-content !important;
   }
 
   .white-card > div {
